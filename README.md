@@ -33,15 +33,18 @@ processor = AutoProcessor.from_pretrained("Salesforce/blip-image-captioning-base
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
 Step 2: Load and Preprocess an Image
+The Python Imaging Library, PIL, is used to open the image file and convert it into an RGB format which is suitable for the model.
 # Load your image, DON'T FORGET TO WRITE YOUR IMAGE NAME
 img_path = "YOUR IMAGE NAME.jpeg"
 # convert it into an RGB format 
+Next, the pre-processed image is passed through the processor to generate inputs in the required format. The return_tensors argument is set to "pt" to return PyTorch tensors.
 image = Image.open(img_path).convert('RGB')
 
 text = "the image of"
 inputs = processor(images=image, text=text, return_tensors="pt")
 
 # Generate a caption for the image
+The argument max_length=50 specifies that the model should generate a caption of up to 50 tokens in length.
 outputs = model.generate(**inputs, max_length=50)
 
 # Decode the generated tokens to text
