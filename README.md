@@ -73,4 +73,10 @@ Step 4: Create the Gradio interface
 Use the gr.Interface class to create the web app interface:
 
 Step 5: Launch the Web App
-Start the web app by calling the launch() method:
+Start the web app by calling the launch() method.
+
+Step 6: Run the application
+
+Save the complete code to a Python file, for example, image_captioning_app.py.
+Open a terminal or command prompt, navigate to the directory where the file is located, and run the command
+python3 image_captioning_app.py
