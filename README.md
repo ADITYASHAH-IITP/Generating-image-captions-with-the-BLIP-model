@@ -12,7 +12,7 @@ Implement an image captioning tool using the BLIP model from Hugging Face's Tran
 
 Install the required libraries in the environment:
 
-# installing required libraries in my_env
+# Installing required libraries in my_env
 pip install langchain==0.1.11 gradio==5.23.2 transformers==4.38.2 bs4==0.0.2 requests==2.31.0 torch==2.2.1
 
 "AutoProcessor" and "BlipForConditionalGeneration" are components of the BLIP model, which is a vision-language model available in the Hugging Face Transformers library.
@@ -36,7 +36,7 @@ Step 2: Load and Preprocess an Image
 The Python Imaging Library, PIL, is used to open the image file and convert it into an RGB format which is suitable for the model.
 # Load your image, DON'T FORGET TO WRITE YOUR IMAGE NAME
 img_path = "YOUR IMAGE NAME.jpeg"
-# convert it into an RGB format 
+# Convert it into an RGB format 
 Next, the pre-processed image is passed through the processor to generate inputs in the required format. The return_tensors argument is set to "pt" to return PyTorch tensors.
 image = Image.open(img_path).convert('RGB')
 
