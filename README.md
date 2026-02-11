@@ -80,3 +80,7 @@ Step 6: Run the application
 Save the complete code to a Python file, for example, image_captioning_app.py.
 Open a terminal or command prompt, navigate to the directory where the file is located, and run the command
 python3 image_captioning_app.py
+
+
+Demo:
+<img width="1069" height="606" alt="image" src="https://github.com/user-attachments/assets/3295a181-4fc5-4b98-b11c-e15b557f179f" />
