@@ -86,8 +86,12 @@ Demo:
 <img width="1069" height="606" alt="image" src="https://github.com/user-attachments/assets/3295a181-4fc5-4b98-b11c-e15b557f179f" />
 
 
-# How image captioning helps a business 
+## How image captioning helps a business 
 See automate_url_captioner.py
 
-# Image captioning with BLIP2
+## Image captioning with BLIP2
 img_captioner_blip2.py
+
+
+# Deploy your app with Code Engine
+
