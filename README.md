@@ -94,4 +94,47 @@ img_captioner_blip2.py
 
 
 # Deploy your app with Code Engine
+Container images and containers
+Code Engine lets you run your apps in containers on IBM Cloud. A container is an isolated environment or place where an application can run independently. Containers can run anywhere, such as on operating systems, virtual machines, developer's machines, physical servers, and so on. This allows the containerized application to run anywhere as well and the isolation mechanism ensures that the running application will not interfere with the rest of the system.
+
+Containers are created from container images. A container image is basically a snapshot or a blueprint that indicates what will be in a container when it runs. Therefore, to deploy a containerized app, you first need to create the app's container image.
+
+## Creating the container image
+The files required to deploy your app in a container are as follows:
+
+You can use the Gradio framework for generating the user interface of the app,for example, the Python script that contains the code to create and launch the gradio.Interface can be named as demo.py.
+The source code of the app has its dependencies, such as libraries that the code uses. Hence, you need a requirements.txt file that specifies all the libraries the source code depends on.
+You need a file that shows the container runtime the steps for assembling the container image, named as Dockerfile.
+
+Open a terminal and make a new directory myapp for storing the files and go into the directory with the following command and create the files:
+ mkdir myapp
+ cd myapp
+ touch demo.py Dockerfile requirements.txt
+
+ Step 1: Creating requirements.txt
+  We can install all of the dependencies into your environment at once with the command pip3 install -r requirements.txt.
+
+ Step 2: Creating demo.py
+  Creating a simple Gradio web application - Check demo.py
+  
+ Step 3: Creating Dockerfile
+  The Dockerfile is the blueprint for assembling a container image - Check Dockerfile 
+  What does the Dockerfile do?
+  FROM python:3.10
+    Docker images can be inherited from other images. Therefore, instead of creating your own base image, you will use the official Python image python:3.10 that already has all the tools and packages that you need to run a Python application.
+  
+  WORKDIR /app
+    To facilitate the running of your commands, let's create a working directory /app. This instructs Docker to use this path as the default location for all subsequent commands. By creating the directory, you do not have to type out full file paths but can use    relative paths based on the working directory.
+  
+  COPY requirements.txt requirements.txt
+    Before you run pip3 install, you need to get your requirements.txt file into your image. You can use the COPYcommand to transfer the contents. The COPYcommand takes two parameters. The first parameter indicates to the Docker what file(s) you would like to copy into the image. The second parameter indicates to the Docker the location where the file(s) need to be copied. You can move the requirements.txt file into your working directory /app.
+  
+  RUN pip3 install –no-cache-dir -r requirements.txt
+    Once you have your requirements.txt file inside the image, you can use the RUN command to execute the command pip3 install --no-cache-dir -r requirements.txt. This works exactly the same as if you were running the command locally on your machine, but this time the modules are installed into the image.
+  
+  COPY
+    At this point, you have an image that is based on Python version 3.10 and you have installed your dependencies. The next step is to add your source code to the image. You will use the COPY command just like you did with your requirements.txt file above to copy everything in your current working directory to the file system in the container image.
+  
+  CMD ["python", "demo.py"]
+    Now, you have to indicate to the Docker what command you want to run when your image is executed inside a container. You use the CMD command. Docker will run the python demo.py command to launch your app inside the container.
 
